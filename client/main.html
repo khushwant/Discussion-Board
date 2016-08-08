@@ -1,0 +1,65 @@
+<head>
+  <title>Discussion Forum</title>
+</head>
+
+<body>
+ 
+  
+</body>
+
+<template name="ApplicationLayout">
+	{{> yield "navbar"}}
+	{{> yield "main"}}
+</template>
+
+<template name="welcome">
+	<div class="container">
+		<div class="jumbotron">
+			<h1>Welcome to image Discussion Board </h1>
+			<a href="/discussion" class="btn btn-info">{{> loginButtons}}</a>
+  		</div>
+  	</div>	
+</template>
+<template name="navbar">
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	        <h1>Discussion Board</h1>
+	      {{>loginButtons}}
+	    </div>
+	  </div>
+	</nav>
+</template>
+
+<template name="comment">
+		<br/>
+		{{#if currentUser}}
+			<form class="js-save-comment">
+				<div class="form-group">
+					    <label for="comment">Write your comment:</label><br/>
+					    <textarea id="commentt" placeholder="Write the comments!!" rows="10" cols="50"></textarea> 
+				</div>
+				<button type="submit" class="btn btn-default">Submit</button>
+			</form>	
+			
+			{{#if comments}}
+					<h2>Comments:</h2>
+					{{>array_list}}
+			{{/if}}
+		{{/if}}
+</template>
+<template name="array_list">
+	<ol>
+	{{#each commentt}}
+		{{>array_items}}
+	{{/each}}
+	</ol>
+</template>
+<template name="array_items">
+	<h4><a href="#">{{Email}}</a>:</h4>
+
+	<p>&emsp;
+		{{comment}}
+	</p>
+	<br/>
+</template>
